@@ -47,7 +47,7 @@ def backprop(dlda,char,lr):
 #create file to store training data
 with open('../data/6_10tr.txt','a+') as run_data:
     run_data.write('\n')
-    #train for 20 epochs
+    #train for 5 epochs
     for epoch in range(5):
         print(f'EPOCH: {epoch+1}')
         epoch_step = 0
@@ -55,7 +55,7 @@ with open('../data/6_10tr.txt','a+') as run_data:
         accuracy = 0
 
         #shuffles the training samples and labels the same way so that they still match together
-        p = np.random.permutation(9088) #10650 because there are 10650 samples
+        p = np.random.permutation(9088) #9088 because there are 9088 samples
         training_samples = training_samples[p]
         chars = chars[p]
 
@@ -72,7 +72,7 @@ with open('../data/6_10tr.txt','a+') as run_data:
 
             avg_loss += loss
 
-            #saves avg acc and loss every 150 steps and prints it out
+            #saves avg acc and loss every 127 steps and prints it out
             if epoch_step > 0 and epoch_step % 128 == 127:
                 x = f'{total_step+90879} {avg_loss/128} {(accuracy/128)*100} \n'
                 run_data.write(x)
